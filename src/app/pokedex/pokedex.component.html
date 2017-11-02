@@ -6,6 +6,8 @@
     <div class="pokemon-id">
       #{{ pkm.id }}
     </div>
+    <!-- [ngClass]="{'hidden': !pkm.imageLoaded}" es geht auch [hidden]="!pkm.imageLoaded"-->
+    <!-- Ich denke [src] reicht aus-->
     <img [ngClass]="{'hidden': !pkm.imageLoaded}" class="pokemon-sprite" (load)="pkm.imageLoaded = true" [attr.src]="pkm.sprite">
     <div class="pokemon-name">
       {{pkm.name}}
@@ -14,13 +16,19 @@
 </div>
 
 <button class="load-button" (click)="loadMore()" [disabled]="isLoading">
+    <!--hier wäre evtl auch ein else möglich gewesen. weiß nicht ob das schöner wäre-->
   <span *ngIf="!error">
+    <!--hier wäre evtl auch ein else möglich gewesen. weiß nicht ob das schöner wäre-->
     <span *ngIf="isLoading">Loading...</span>
     <span *ngIf="!isLoading">Load more</span>
   </span>
   <span *ngIf="error">
     Loading failed
   </span>
+  <!--
+  <span *ngIf="isLoading; ;then loading else loadmore"></span>
+  <ng-template #loading>Loading...</ng-template>
+  <ng-template #loadmore>Load more</ng-template>
+  -->
 </button>
-
 </div>

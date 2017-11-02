@@ -9,5 +9,6 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
+  // title wird nicht genutzt und kann gelöscht werden
   title = 'Pokedex';
 }
